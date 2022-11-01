@@ -5,7 +5,11 @@ public class Main {
         Randoms randoms = new Randoms(90, 100);
         Iterator iterator = randoms.iterator();
         while (iterator.hasNext()) {
+            if (iterator.next().equals(100)) {
+                break;
+            }
             System.out.println(iterator.next());
         }
     }
 }
+

@@ -7,19 +7,12 @@ public class Randoms implements Iterable<Integer> {
     protected Random random;
     protected int min;
     protected int max;
-    protected List<Integer> list = new ArrayList<>();
+    int randomNumber;
+
 
     public Randoms(int min, int max) {
         this.min = min;
         this.max = max;
-        while (true) {
-            int num = new Random().nextInt((max - min) + 1) + min;
-            if (num == max) {
-                list.add(num);
-                break;
-            }
-            list.add(num);
-        }
     }
 
     @Override
@@ -28,16 +21,25 @@ public class Randoms implements Iterable<Integer> {
     }
 
     private class RandomIterator implements Iterator {
-        int index;
 
         @Override
         public boolean hasNext() {
-            return index < list.size();
+            return true;
         }
 
         @Override
-        public Object next() {
-            return list.get(index++);
+        public Integer next() {
+            while (true) {
+                int num = new Random().nextInt((max - min) + 1) + min;
+                if (num == max) {
+                    randomNumber = num;
+                    System.out.println("Выпало число 100, давайте на этом закончим");
+                    break;
+                }
+                randomNumber = num;
+                return randomNumber;
+            }
+            return randomNumber;
         }
     }
 }
