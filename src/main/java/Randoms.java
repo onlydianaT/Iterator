@@ -30,16 +30,10 @@ public class Randoms implements Iterable<Integer> {
         @Override
         public Integer next() {
             while (true) {
-                int num = new Random().nextInt((max - min) + 1) + min;
-                if (num == max) {
-                    randomNumber = num;
-                    System.out.println("Выпало число 100, давайте на этом закончим");
-                    break;
-                }
-                randomNumber = num;
+                randomNumber = new Random().nextInt((max - min) + 1) + min;
                 return randomNumber;
             }
-            return randomNumber;
+
         }
     }
 }
